@@ -1,0 +1,58 @@
+#Employee information storage in different text files:
+
+#3 categories Administrative, Team, employees:
+help = """a = Aministratives, t =team members, e =employees """
+print(help)
+
+choose = input("category (a, t, e): ").lower()
+
+# -----------
+if choose == "a":
+    admin_name = input("Name of the Admin: ")
+    adn_id_card = int(input("Admin ID number: "))
+    adn_phone = int(input("Enter Admin's phone number: "))
+    adn_email = input("Enter Admin's email: ")
+
+    admin_set = {
+        "Name" : admin_name,
+        "ID Card" : adn_id_card,
+        "phone number" : adn_phone,
+        "email" : adn_email
+    }
+
+    admin_data = str(admin_set)
+    with open("admin.txt", "a") as f:
+        f.write(admin_data)
+
+    print("Admin information is successfully added to the 'admin.txt' file")
+
+# -----------
+if choose == "t":
+    team_name = input("Name of the team member: ")
+    tm_id_card = int(input("Team member ID: "))
+    tm_phone = int(input("Team member phone number: "))
+    tm_email = input("Team member email: ")
+
+    team_set = { "Name" : team_name, "ID Card" : tm_id_card, "phone number" : tm_phone, "email" : tm_email }
+
+    team_data = str(team_set)
+    with open("team.txt", "a") as f:
+        f.write(team_data)
+
+    print("Team member information is successfully added to the 'team.txt' file")
+
+# -----------
+if choose == "e":
+    employee_name = input("Name of the employee: ")
+    emp_id_card = int(input("employee ID number: "))
+    emp_phone = int(input("Employee phone number: "))
+    emp_email = input("Employee email: ")
+
+    employee_set = { "Name" : employee_name, "ID Card" : emp_id_card, "phone number" : emp_phone, "email" : emp_email }
+
+    employee_data = str(employee_set)
+    with open("employee.txt", "a") as f:
+        f.write(employee_data)
+
+    print("Employee data is successfully added to the 'employee.txt' file")
+
