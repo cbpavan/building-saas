@@ -1,0 +1,83 @@
+print("Welcome to material cost estimator made by CodebyPavan")
+
+#Get the information regarding the quantity of the construction materials:
+
+print("-----First give me the quantity of the required materials-----")
+
+material_cement = int(input("How many cement bags you need?: "))
+material_sand = int(input("How many tonnes of sand is required?: "))
+material_gravel = int(input("How many tonnes of gravel is required?: "))
+material_bricks = int(input("How many bricks are required?: "))
+mateial_steel = int(input("How many tonnes of steel is required?: "))
+
+quantities_list = {
+    "Cement required in bags" : material_cement ,
+    "Sand required in tonnes" : material_sand ,
+    "Gravel required in tonnes" : material_gravel ,
+    "Bricks required" : material_bricks ,
+    "Steel required" : mateial_steel
+}
+material = str(quantities_list)
+with open("material cost.txt", "a") as f:
+    f.write(material + "\n")
+
+#Now, get the price of the materials:
+print("-----Now, give me the market prices of these materials in your area-----")
+
+cost_cement = int(input("what is the price of 1 cement bag?: "))
+cost_sand = int(input("What is the price of 1 tonne of sand?: "))
+cost_gravel = int(input("What is the price of 1 tonne of gravel?: "))
+cost_bricks = int(input("What is the price of 1 brick?: "))
+cost_steel = int(input("What is the price is 1 tonne of steel: "))
+
+cost_list = {
+    "Cost of cement" : cost_cement ,
+    "Cost of sand" : cost_sand ,
+    "Cost of gravel" : cost_gravel ,
+    "Cost of bricks" : cost_bricks ,
+    "Cost of steel" :cost_steel
+}
+cost = str(cost_list)
+with open("material cost.txt", "a") as f:
+    f.write(cost + "\n")
+
+
+#Now, let's find the money required for each material:
+
+overall_cost_cement = material_cement * cost_cement
+overall_cost_sand = material_sand * cost_sand
+overall_cost_gravel = material_gravel * cost_gravel
+overall_cost_bricks = material_bricks * cost_bricks
+overall_cost_steel = mateial_steel * cost_steel
+
+#Let's print the costs saperatly:
+print(f" Money required to buy cement:{overall_cost_cement}")
+print(f" Money required to buy sand: {overall_cost_sand}")
+print(f" Money required to buy gravel: {overall_cost_gravel}")
+print(f" Money required to buy bricks: {overall_cost_bricks}")
+print(f" Money required to buy steel: {overall_cost_steel}")
+
+total_cost = {
+    "Total cost of cement" : overall_cost_cement ,
+    "Total cost of sand" : overall_cost_sand ,
+    "Total cost of gravel" : overall_cost_gravel ,
+    "Total cost of bricks" : overall_cost_bricks ,
+    "Total cost of steel" : overall_cost_steel
+}
+money = str(total_cost)
+with open("material cost.txt", "a") as f:
+    f.write(money +"\n")
+
+#Now, print the cost of all the materials:
+
+total = overall_cost_cement + overall_cost_sand + overall_cost_gravel + overall_cost_bricks
+
+print(f"Overall budget needed: {total}")
+
+#Now, let's create a text file to store the value of the over_all_materials and budget:
+
+save = str(total)
+with open("material cost.txt", "a") as f:
+    f.write(save + "\n")
+
+print("---All the information is added to 'material cost.txt' file for your reference---")
