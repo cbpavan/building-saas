@@ -1,0 +1,125 @@
+# first let's define the types of workers needed for the project. Here I found 19 workers
+project_budget = int(input("How much budget you have: "))
+print(f"That means we need to make sure we can hire man_power for project under {project_budget} budget")
+
+
+# Let's ask for number people required:
+print(" --- First, tell me how many people need for each task shown below ---")
+
+project_manager = int(input("Number of project managers: "))
+construction_manager = int(input("Number of construction managers: "))
+site_supervisor = int(input("Number of site supervisors: "))
+architects = int(input("Number of architects: "))
+engineers = int(input("Number of engineers: "))
+carpenters = int(input("Number of carpenters: "))
+masons = int(input("Number of masons: "))
+electricians = int(input("Number of electricians: "))
+plumbers = int(input("Number of plumbers: "))
+welders = int(input("Number of welders: "))
+painters = int(input("Number of painters: "))
+general_labour = int(input("Total number of general labour: "))
+heavy_equipment_operators = int(input("Number of heavy equipment operators: "))
+safety_officer = int(input("Number of safety officers: "))
+quality_control_officers = int(input("Number of quality control officers: "))
+surveyors = int(input("Number of surveyors: "))
+administrative_staff = int(input("Number of administrative staff: "))
+procurement_team = int(input("Total members in procurement team: "))
+traffic_controllers = int(input("Number of traffic controllers: "))
+
+#Now let's fine the day wage paid to the man power:
+print("--- Now, tell me how much you pay them per day ---")
+
+wage_pm = int(input("Per day wage/ salary for one project manager: "))
+wage_cm = int(input("Per day wage/ salary for one construction manager: "))
+wage_ss = int(input("Per day wage/ salary for one site supervisor: "))
+wage_a = int(input("Per day wage/ salary for one architect: "))
+wage_e = int(input("Per day wage/ salary: for one engineer: "))
+wage_c = int(input("Per day wage/ salary for one carpenter: "))
+wage_m = int(input("Per day wage/ salary for one mason: "))
+wage_ele = int(input("Per day wage/ salary for one electrician: "))
+wage_p = int(input("Per day wage/ salary for one plumber: "))
+wage_w = int(input("Per day wage/ salary for one welder: "))
+wage_paint = int(input("Per day wage/ salary for one painter: "))
+wage_gl = int(input("Per day wage/ salary for one general labour: "))
+wage_heo = int(input("Per day wage/ salary for one heavy equipment operator: "))
+wage_so = int(input("Per day wage/ salary for one safety officer: "))
+wage_qco = int(input("Per day wage/ salary for one quality control officer: "))
+wage_s = int(input("Per day wage/ salary for one surveyor: "))
+wage_as = int(input("Per day wage/ salary for one administrative member: "))
+wage_pt = int(input("Per day wage/ salary for one procurement member: "))
+wage_tc = int(input("Per day wage/ salary for one traffic controller: "))
+
+#Now, let's calculate the overall cost required for entire team per day:
+
+required_pm = project_manager * wage_pm
+required_cm = construction_manager * wage_cm
+required_ss = site_supervisor * wage_ss
+required_a = architects * wage_a
+required_e = engineers * wage_e
+required_c = carpenters * wage_c
+required_m = masons * wage_m
+required_ele = electricians * wage_ele
+required_p = plumbers * wage_p
+required_w = welders * wage_w
+required_paint = painters * wage_paint
+required_gl = general_labour * wage_gl
+required_heo = heavy_equipment_operators * wage_heo
+required_so = safety_officer * wage_so
+required_qco = quality_control_officers * wage_qco
+required_s = surveyors * wage_s
+required_as = administrative_staff * wage_as
+required_pt = procurement_team * wage_pt
+required_tc = traffic_controllers * wage_tc
+
+for_text = {
+    "(Total Project managers , cost per person per day)" : (project_manager, wage_pm),
+    "(Total construction managers, cost per person per day) " : (construction_manager, wage_cm),
+    "(Total site supervisors, cost per person per day)" : (site_supervisor, wage_ss),
+    "(Total architects, cost per person per day)" : (architects, wage_a),
+    "(Total engineers, cost per person per day)" : (engineers, wage_e),
+    "(Total carpenters, cost per person per day)" : (carpenters, wage_c),
+    "(Total masons, cost per person per day)" : (masons, wage_m),
+    "(Total electricians, cost per person per day)" : (electricians, wage_ele),
+    "(Total plumbers, cost per person per day)" : (plumbers, wage_p),
+    "(Total welders, cost per person per day)" : (welders, wage_w),
+    "(Total painters, cost per person per day)" : (painters, wage_paint),
+    "(Total general labour, cost per person per day)" : (general_labour, wage_gl),
+    "(Total heavy equipment operators, cost per day per person)" : (heavy_equipment_operators, wage_heo),
+    "(Total safety officers, cost per day per person)" : (safety_officer, wage_so),
+    "(Total quality control officers, cost per day per person)" : (quality_control_officers, wage_qco),
+    "(Total surveyors, cost per day per person)" : (surveyors, wage_s),
+    "(Total administrative staff, cost per day per person)" : (administrative_staff, wage_as),
+    "(Total procurement team members, cost per day per person)" : (procurement_team, wage_pt),
+    "(Total traffic controllers, cost per day per person)" : (traffic_controllers, wage_tc)
+}
+
+
+total_cost = required_pm + required_cm + required_ss + required_a + required_e + required_c + required_m  + required_ele + required_p + required_w + required_paint + required_gl + required_heo + required_so + required_qco + required_s + required_as + required_pt + required_tc
+
+print(f"Total cost per day: {total_cost}")
+
+how_many_days = int(input("How many working days per month?: "))
+overall_cost = total_cost * how_many_days
+
+print(f" Your Budget for the project: {project_budget}")
+print(f" Money required for project: {overall_cost}")
+
+if overall_cost == project_budget:
+    equal_to = project_budget - overall_cost
+    print(f"money can be saved is {equal_to}")
+    print("Funds are sufficient for the project 😎")
+
+elif overall_cost < project_budget:
+    less_than = project_budget - overall_cost
+    print(f"Monay saved is {less_than}")
+    print("Hurray! You saved some money 🎉 ")
+
+else:
+    greater_than = project_budget - overall_cost
+    print(f"More money is required {greater_than}")
+    print("We need more money 😌")
+
+save_the_work = str(for_text)
+with open("employees cost.txt", "a") as f:
+    f.write(save_the_work + "\n")
+f.close()
