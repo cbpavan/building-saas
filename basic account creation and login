@@ -1,0 +1,66 @@
+import hashlib
+
+def sign_up():
+    email = input("Enter your email: ")
+    password = input("Create your password: ")
+    con_pwd = input("Confirm your password: ")
+
+    if password != con_pwd:
+        print("Passwords did not match. Please, try again")
+
+    if password == con_pwd:
+        encode = con_pwd.encode()
+        hashed_password = hashlib.md5(encode).hexdigest()
+
+    with open("userinfo.txt", "w") as f:
+        f.write(email + "\n")
+        f.write(hashed_password)
+    f.close()
+
+    print("Congratulations!, account created successfully")
+
+def login():
+    email = input("Enter email: ")
+    password = input("Enter password: ")
+
+    auth = password.encode()
+    auth_hash = hashlib.md5(auth).hexdigest()
+
+    with open("userinfo.txt", "r") as f:
+        stored_email , stored_password = f.read().split("\n")
+    f.close()
+
+    if email == stored_email and auth_hash == stored_password:
+        print("Logged In!")
+
+    else:
+        print("Invalid name or password. Please, try again.")
+
+while True:
+    print("-----Welcome to the construction management tool made by CodebyPavan-----")
+
+    help = """
+    CHOICE: 
+    1. Create account
+    2. Login
+    3. Exit
+    
+    """
+
+    print(help)
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        sign_up()
+        break
+
+    if choice == "2":
+        login()
+        break
+
+    if choice == "3":
+        break
+
+    else:
+        print("Invalid input. Please, try again.")
